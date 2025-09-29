@@ -152,7 +152,7 @@
     function renderQuestion() {
       const current = QUESTIONS[index];
 
-      app.innerHTML = 
+      app.innerHTML = `
         <div class="header">
           <h1>Raiku Quiz</h1>
           <div>Question ${index + 1}/${QUESTIONS.length}</div>
@@ -161,11 +161,11 @@
         <div class="question-block">
           <div class="question">${current.q}</div>
           <div class="choices">
-            ${current.choices.map((c, i) => 
+            ${current.choices.map((c, i) => `
               <div class="choice" onclick="selectChoice(${i})" id="choice-${i}">
                 ${c}
               </div>
-            ).join('')}
+            `).join('')}
           </div>
         </div>
 
@@ -173,7 +173,7 @@
           <button class="small-button" onclick="startQuiz()">Restart</button>
           <button class="button" onclick="nextQuestion()">Next</button>
         </div>
-      ;
+      `;
     }
 
     function selectChoice(i) {
@@ -182,7 +182,7 @@
       const current = QUESTIONS[index];
 
       current.choices.forEach((_, j) => {
-        const el = document.getElementById(choice-${j});
+        const el = document.getElementById(`choice-${j}`);
         if (j === current.answer) {
           el.classList.add('correct');
         } else if (j === i) {
@@ -208,13 +208,13 @@
     }
 
     function renderResult() {
-      app.innerHTML = 
+      app.innerHTML = `
         <div class="start-screen">
           <h2>Your score: ${score}/${QUESTIONS.length}</h2>
           <p>${score === QUESTIONS.length ? 'Perfect! Nice work.' : 'Good try — you can retake it.'}</p>
           <button class="button" onclick="startQuiz()">Play again</button>
         </div>
-      ;
+      `;
     }
   </script>
 </body>
